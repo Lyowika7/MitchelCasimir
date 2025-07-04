@@ -1,30 +1,47 @@
 
+import { Music, Play, Instagram, Camera } from 'lucide-react';
+
 const SocialLinks = () => {
   const socialLinks = [
     {
       name: 'Spotify',
-      url: 'https://open.spotify.com/artist/mitchelcasimir',
-      description: 'Stream on Spotify'
+      url: 'https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk?si=SzaXxJbCTMiP2M7_7nMy3A',
+      description: 'Stream on Spotify',
+      icon: Music,
+      bgColor: 'bg-green-600',
+      hoverColor: 'hover:bg-green-700'
     },
     {
       name: 'Apple Music',
-      url: 'https://music.apple.com/artist/mitchelcasimir',
-      description: 'Listen on Apple Music'
+      url: 'https://music.apple.com/us/artist/mitchelcasimir/1736847723',
+      description: 'Listen on Apple Music',
+      icon: Music,
+      bgColor: 'bg-gray-800',
+      hoverColor: 'hover:bg-gray-700'
     },
     {
       name: 'YouTube',
-      url: 'https://youtube.com/@mitchelcasimir',
-      description: 'Watch on YouTube'
+      url: 'https://www.youtube.com/@MitchelCasimir',
+      description: 'Watch on YouTube',
+      icon: Play,
+      bgColor: 'bg-red-600',
+      hoverColor: 'hover:bg-red-700'
     },
     {
       name: 'Instagram',
-      url: 'https://instagram.com/mitchelcasimir',
-      description: 'Follow on Instagram'
+      url: 'https://www.instagram.com/mitchelcasimir/',
+      description: 'Follow on Instagram',
+      icon: Instagram,
+      bgColor: 'bg-gradient-to-r from-purple-500 to-pink-500',
+      hoverColor: 'hover:from-purple-600 hover:to-pink-600'
     },
     {
       name: 'TikTok',
-      url: 'https://tiktok.com/@mitchelcasimir',
-      description: 'Follow on TikTok'
+      url: 'https://www.tiktok.com/@mitchelcasimir',
+      description: 'Follow on TikTok',
+      icon: Camera,
+      bgColor: 'bg-black',
+      hoverColor: 'hover:bg-gray-900'
     }
   ];
 
@@ -36,32 +53,38 @@ const SocialLinks = () => {
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {socialLinks.map((link, index) => (
-            <a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link group text-center block"
-              style={{
-                animationDelay: `${index * 0.1}s`
-              }}
-            >
-              <div className="p-8">
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-gradient transition-colors">
-                  {link.name}
-                </h3>
-                <p className="text-sm text-white/60 group-hover:text-white/80 transition-colors">
-                  {link.description}
-                </p>
-              </div>
-            </a>
-          ))}
+          {socialLinks.map((link, index) => {
+            const IconComponent = link.icon;
+            return (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link group text-center block transform transition-all duration-300 hover:scale-105"
+                style={{
+                  animationDelay: `${index * 0.1}s`
+                }}
+              >
+                <div className={`p-8 rounded-xl ${link.bgColor} ${link.hoverColor} transition-all duration-300`}>
+                  <div className="flex justify-center mb-4">
+                    <IconComponent size={32} className="text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    {link.name}
+                  </h3>
+                  <p className="text-sm text-white/80">
+                    {link.description}
+                  </p>
+                </div>
+              </a>
+            );
+          })}
         </div>
         
         <div className="mt-16 text-center">
           <p className="text-white/60 text-sm tracking-wide">
-            © 2024 mitchelCasimir. All rights reserved.
+            © 2024 MitchelCasimir. All rights reserved.
           </p>
         </div>
       </div>

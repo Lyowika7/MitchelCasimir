@@ -1,5 +1,6 @@
 
 import { useEffect } from 'react';
+import { Music, Play, Instagram, Camera } from 'lucide-react';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -15,6 +16,34 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
     { label: 'Tour', href: '/tour' },
     { label: 'Store', href: '/store' },
     { label: 'Contact', href: '/contact' }
+  ];
+
+  const socialLinks = [
+    { 
+      name: 'Spotify', 
+      url: 'https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk?si=SzaXxJbCTMiP2M7_7nMy3A',
+      icon: Music
+    },
+    { 
+      name: 'Apple Music', 
+      url: 'https://music.apple.com/us/artist/mitchelcasimir/1736847723',
+      icon: Music
+    },
+    { 
+      name: 'YouTube', 
+      url: 'https://www.youtube.com/@MitchelCasimir',
+      icon: Play
+    },
+    { 
+      name: 'Instagram', 
+      url: 'https://www.instagram.com/mitchelcasimir/',
+      icon: Instagram
+    },
+    { 
+      name: 'TikTok', 
+      url: 'https://www.tiktok.com/@mitchelcasimir',
+      icon: Camera
+    }
   ];
 
   useEffect(() => {
@@ -57,18 +86,21 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         
         <div className="mt-16 text-center">
           <div className="flex flex-col space-y-4">
-            <a href="https://open.spotify.com/artist/mitchelcasimir" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
-              Spotify
-            </a>
-            <a href="https://music.apple.com/artist/mitchelcasimir" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
-              Apple Music
-            </a>
-            <a href="https://youtube.com/@mitchelcasimir" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
-              YouTube
-            </a>
-            <a href="https://instagram.com/mitchelcasimir" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
-              Instagram
-            </a>
+            {socialLinks.map((link) => {
+              const IconComponent = link.icon;
+              return (
+                <a 
+                  key={link.name}
+                  href={link.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-white/70 hover:text-white transition-colors flex items-center justify-center space-x-2"
+                >
+                  <IconComponent size={16} />
+                  <span>{link.name}</span>
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

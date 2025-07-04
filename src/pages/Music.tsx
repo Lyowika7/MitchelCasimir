@@ -4,7 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Play, ExternalLink } from 'lucide-react';
+import { Play, ExternalLink, Music } from 'lucide-react';
 
 interface Release {
   id: string;
@@ -58,7 +58,7 @@ const Music = () => {
             Music
           </h1>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Explore mitchelCasimir's latest releases and discography
+            Explore MitchelCasimir's latest releases and discography
           </p>
         </div>
 
@@ -66,23 +66,23 @@ const Music = () => {
           <div className="text-center py-16">
             <div className="mb-8">
               <h2 className="text-3xl font-semibold text-white mb-4">Latest Music</h2>
-              <p className="text-white/60 text-lg mb-8">Listen to mitchelCasimir's music on your favorite platform</p>
+              <p className="text-white/60 text-lg mb-8">Listen to MitchelCasimir's music on your favorite platform</p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button asChild className="bg-green-600 hover:bg-green-700">
-                  <a href="https://open.spotify.com/artist/mitchelcasimir" target="_blank" rel="noopener noreferrer">
-                    <ExternalLink size={16} className="mr-2" />
+                  <a href="https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk?si=SzaXxJbCTMiP2M7_7nMy3A" target="_blank" rel="noopener noreferrer">
+                    <Music size={16} className="mr-2" />
                     Spotify
                   </a>
                 </Button>
-                <Button asChild variant="outline" className="border-gray-600 text-white">
-                  <a href="https://music.apple.com/artist/mitchelcasimir" target="_blank" rel="noopener noreferrer">
-                    <ExternalLink size={16} className="mr-2" />
+                <Button asChild variant="outline" className="border-gray-600 text-white bg-gray-800 hover:bg-gray-700">
+                  <a href="https://music.apple.com/us/artist/mitchelcasimir/1736847723" target="_blank" rel="noopener noreferrer">
+                    <Music size={16} className="mr-2" />
                     Apple Music
                   </a>
                 </Button>
                 <Button asChild className="bg-red-600 hover:bg-red-700">
-                  <a href="https://youtube.com/@mitchelcasimir" target="_blank" rel="noopener noreferrer">
-                    <ExternalLink size={16} className="mr-2" />
+                  <a href="https://www.youtube.com/@MitchelCasimir" target="_blank" rel="noopener noreferrer">
+                    <Play size={16} className="mr-2" />
                     YouTube
                   </a>
                 </Button>

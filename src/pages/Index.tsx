@@ -31,7 +31,7 @@ const Index = () => {
       }`}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="text-2xl font-playfair font-semibold text-white">
-            mitchelCasimir
+            MitchelCasimir
           </div>
           
           {/* Desktop Navigation */}
