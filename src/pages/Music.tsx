@@ -58,13 +58,36 @@ const Music = () => {
             Music
           </h1>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Explore ARIA's latest releases and discography
+            Explore mitchelCasimir's latest releases and discography
           </p>
         </div>
 
         {releases.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-white/60 text-lg">No releases available yet. Check back soon!</p>
+            <div className="mb-8">
+              <h2 className="text-3xl font-semibold text-white mb-4">Latest Music</h2>
+              <p className="text-white/60 text-lg mb-8">Listen to mitchelCasimir's music on your favorite platform</p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button asChild className="bg-green-600 hover:bg-green-700">
+                  <a href="https://open.spotify.com/artist/mitchelcasimir" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink size={16} className="mr-2" />
+                    Spotify
+                  </a>
+                </Button>
+                <Button asChild variant="outline" className="border-gray-600 text-white">
+                  <a href="https://music.apple.com/artist/mitchelcasimir" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink size={16} className="mr-2" />
+                    Apple Music
+                  </a>
+                </Button>
+                <Button asChild className="bg-red-600 hover:bg-red-700">
+                  <a href="https://youtube.com/@mitchelcasimir" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink size={16} className="mr-2" />
+                    YouTube
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

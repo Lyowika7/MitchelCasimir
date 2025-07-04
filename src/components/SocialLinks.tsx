@@ -3,28 +3,28 @@ const SocialLinks = () => {
   const socialLinks = [
     {
       name: 'Spotify',
-      url: 'https://spotify.com',
+      url: 'https://open.spotify.com/artist/mitchelcasimir',
       description: 'Stream on Spotify'
     },
     {
       name: 'Apple Music',
-      url: 'https://music.apple.com',
+      url: 'https://music.apple.com/artist/mitchelcasimir',
       description: 'Listen on Apple Music'
     },
     {
       name: 'YouTube',
-      url: 'https://youtube.com',
+      url: 'https://youtube.com/@mitchelcasimir',
       description: 'Watch on YouTube'
     },
     {
-      name: 'Tour',
-      url: '#tour',
-      description: 'Live Dates'
+      name: 'Instagram',
+      url: 'https://instagram.com/mitchelcasimir',
+      description: 'Follow on Instagram'
     },
     {
-      name: 'Merch',
-      url: '#store',
-      description: 'Official Store'
+      name: 'TikTok',
+      url: 'https://tiktok.com/@mitchelcasimir',
+      description: 'Follow on TikTok'
     }
   ];
 
@@ -40,6 +40,8 @@ const SocialLinks = () => {
             <a
               key={link.name}
               href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="social-link group text-center block"
               style={{
                 animationDelay: `${index * 0.1}s`
@@ -59,7 +61,7 @@ const SocialLinks = () => {
         
         <div className="mt-16 text-center">
           <p className="text-white/60 text-sm tracking-wide">
-            © 2024 ARIA. All rights reserved.
+            © 2024 mitchelCasimir. All rights reserved.
           </p>
         </div>
       </div>

@@ -57,14 +57,17 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         
         <div className="mt-16 text-center">
           <div className="flex flex-col space-y-4">
-            <a href="https://spotify.com" className="text-white/70 hover:text-white transition-colors">
+            <a href="https://open.spotify.com/artist/mitchelcasimir" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
               Spotify
             </a>
-            <a href="https://music.apple.com" className="text-white/70 hover:text-white transition-colors">
+            <a href="https://music.apple.com/artist/mitchelcasimir" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
               Apple Music
             </a>
-            <a href="https://youtube.com" className="text-white/70 hover:text-white transition-colors">
+            <a href="https://youtube.com/@mitchelcasimir" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
               YouTube
+            </a>
+            <a href="https://instagram.com/mitchelcasimir" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
+              Instagram
             </a>
           </div>
         </div>
