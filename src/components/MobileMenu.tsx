@@ -8,11 +8,13 @@ interface MobileMenuProps {
 
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   const navItems = [
-    { label: 'Music', href: '#music' },
-    { label: 'Tour', href: '#tour' },
-    { label: 'Videos', href: '#videos' },
-    { label: 'Store', href: '#store' },
-    { label: 'Contact', href: '#contact' }
+    { label: 'Home', href: '/' },
+    { label: 'Music', href: '/music' },
+    { label: 'News', href: '/news' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Tour', href: '/tour' },
+    { label: 'Store', href: '/store' },
+    { label: 'Contact', href: '/contact' }
   ];
 
   useEffect(() => {

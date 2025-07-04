@@ -5,10 +5,14 @@ import Hero from '../components/Hero';
 import Navigation from '../components/Navigation';
 import SocialLinks from '../components/SocialLinks';
 import MobileMenu from '../components/MobileMenu';
+import AuthButton from '../components/auth/AuthButton';
+import NewsletterSignup from '../components/NewsletterSignup';
+import { useAuth } from '../hooks/useAuth';
 
 const Index = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +37,11 @@ const Index = () => {
           {/* Desktop Navigation */}
           <Navigation className="hidden md:flex" />
           
+          {/* Auth Button */}
+          <div className="hidden md:block">
+            <AuthButton user={user} />
+          </div>
+          
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -51,6 +60,9 @@ const Index = () => {
 
       {/* Hero Section */}
       <Hero />
+
+      {/* Newsletter Signup */}
+      <NewsletterSignup />
 
       {/* Social Links Section */}
       <SocialLinks />
