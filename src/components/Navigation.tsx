@@ -16,11 +16,15 @@ const Navigation = ({ className }: NavigationProps) => {
 
   return (
     <nav className={className}>
-      <ul className="flex space-x-8">
+      <ul className="flex items-center space-x-8">
         {navItems.map((item) => (
           <li key={item.label}>
-            <a href={item.href} className="nav-link">
+            <a 
+              href={item.href} 
+              className="text-white/90 hover:text-white transition-all duration-300 text-sm font-medium tracking-wide uppercase relative group"
+            >
               {item.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </a>
           </li>
         ))}

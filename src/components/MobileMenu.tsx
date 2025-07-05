@@ -62,20 +62,17 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
   return (
     <div className="fixed inset-0 z-40 md:hidden">
-      <div className="absolute inset-0 bg-black/95 backdrop-blur-md" />
+      <div className="absolute inset-0 bg-black/98 backdrop-blur-md" />
       
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
-        <nav className="text-center">
-          <ul className="space-y-8">
+        <nav className="text-center mb-12">
+          <ul className="space-y-6">
             {navItems.map((item, index) => (
-              <li key={item.label}>
+              <li key={item.label} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <a
                   href={item.href}
                   onClick={onClose}
-                  className="block text-3xl font-playfair text-white hover:text-white/70 transition-colors"
-                  style={{
-                    animationDelay: `${index * 0.1}s`
-                  }}
+                  className="block text-2xl md:text-3xl font-playfair text-white hover:text-white/70 transition-colors uppercase tracking-wide"
                 >
                   {item.label}
                 </a>
@@ -84,9 +81,9 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
           </ul>
         </nav>
         
-        <div className="mt-16 text-center">
-          <div className="flex flex-col space-y-4">
-            {socialLinks.map((link) => {
+        <div className="text-center">
+          <div className="flex flex-col space-y-3">
+            {socialLinks.map((link, index) => {
               const IconComponent = link.icon;
               return (
                 <a 
@@ -94,7 +91,8 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                   href={link.url} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-white/70 hover:text-white transition-colors flex items-center justify-center space-x-2"
+                  className="text-white/70 hover:text-white transition-colors flex items-center justify-center space-x-3 text-sm uppercase tracking-wider"
+                  style={{ animationDelay: `${(navItems.length + index) * 0.1}s` }}
                 >
                   <IconComponent size={16} />
                   <span>{link.name}</span>
