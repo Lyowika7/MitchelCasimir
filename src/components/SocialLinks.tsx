@@ -6,7 +6,6 @@ const SocialLinks = () => {
     {
       name: 'Spotify',
       url: 'https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk?si=SzaXxJbCTMiP2M7_7nMy3A',
-      description: 'Stream on Spotify',
       icon: Music,
       bgColor: 'bg-green-600',
       hoverColor: 'hover:bg-green-700'
@@ -14,7 +13,6 @@ const SocialLinks = () => {
     {
       name: 'Apple Music',
       url: 'https://music.apple.com/us/artist/mitchelcasimir/1736847723',
-      description: 'Listen on Apple Music',
       icon: Music,
       bgColor: 'bg-gray-800',
       hoverColor: 'hover:bg-gray-700'
@@ -22,7 +20,6 @@ const SocialLinks = () => {
     {
       name: 'YouTube',
       url: 'https://www.youtube.com/@MitchelCasimir',
-      description: 'Watch on YouTube',
       icon: Play,
       bgColor: 'bg-red-600',
       hoverColor: 'hover:bg-red-700'
@@ -30,7 +27,6 @@ const SocialLinks = () => {
     {
       name: 'Instagram',
       url: 'https://www.instagram.com/mitchelcasimir/',
-      description: 'Follow on Instagram',
       icon: Instagram,
       bgColor: 'bg-gradient-to-r from-purple-500 to-pink-500',
       hoverColor: 'hover:from-purple-600 hover:to-pink-600'
@@ -38,7 +34,6 @@ const SocialLinks = () => {
     {
       name: 'TikTok',
       url: 'https://www.tiktok.com/@mitchelcasimir',
-      description: 'Follow on TikTok',
       icon: Camera,
       bgColor: 'bg-black',
       hoverColor: 'hover:bg-gray-900'
@@ -52,7 +47,7 @@ const SocialLinks = () => {
           Connect
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {socialLinks.map((link, index) => {
             const IconComponent = link.icon;
             return (
@@ -66,16 +61,8 @@ const SocialLinks = () => {
                   animationDelay: `${index * 0.1}s`
                 }}
               >
-                <div className={`p-8 rounded-xl ${link.bgColor} ${link.hoverColor} transition-all duration-300`}>
-                  <div className="flex justify-center mb-4">
-                    <IconComponent size={32} className="text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {link.name}
-                  </h3>
-                  <p className="text-sm text-white/80">
-                    {link.description}
-                  </p>
+                <div className={`p-8 rounded-xl ${link.bgColor} ${link.hoverColor} transition-all duration-300 flex items-center justify-center`}>
+                  <IconComponent size={48} className="text-white" />
                 </div>
               </a>
             );
