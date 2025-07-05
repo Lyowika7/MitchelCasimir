@@ -4,7 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Play, ExternalLink, Music } from 'lucide-react';
+import { Play, ExternalLink, Music as MusicIcon } from 'lucide-react';
 
 interface Release {
   id: string;
@@ -70,13 +70,13 @@ const Music = () => {
               <div className="flex flex-wrap justify-center gap-4">
                 <Button asChild className="bg-green-600 hover:bg-green-700">
                   <a href="https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk?si=SzaXxJbCTMiP2M7_7nMy3A" target="_blank" rel="noopener noreferrer">
-                    <Music size={16} className="mr-2" />
+                    <div className="w-4 h-4 mr-2 bg-green-500 rounded-full"></div>
                     Spotify
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="border-gray-600 text-white bg-gray-800 hover:bg-gray-700">
                   <a href="https://music.apple.com/us/artist/mitchelcasimir/1736847723" target="_blank" rel="noopener noreferrer">
-                    <Music size={16} className="mr-2" />
+                    <div className="w-4 h-4 mr-2 bg-white rounded-sm"></div>
                     Apple Music
                   </a>
                 </Button>
