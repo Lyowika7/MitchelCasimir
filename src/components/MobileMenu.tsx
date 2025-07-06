@@ -9,13 +9,13 @@ interface MobileMenuProps {
 
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Music', href: '/music' },
-    { label: 'News', href: '/news' },
-    { label: 'Gallery', href: '/gallery' },
-    { label: 'Tour', href: '/tour' },
-    { label: 'Store', href: '/store' },
-    { label: 'Contact', href: '/contact' }
+    { label: 'HOME', href: '/' },
+    { label: 'MUSIC', href: '/music' },
+    { label: 'NEWS', href: '/news' },
+    { label: 'GALLERY', href: '/gallery' },
+    { label: 'TOUR', href: '/tour' },
+    { label: 'STORE', href: '/store' },
+    { label: 'CONTACT', href: '/contact' }
   ];
 
   const socialLinks = [
@@ -62,7 +62,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
   return (
     <div className="fixed inset-0 z-40 lg:hidden">
-      <div className="absolute inset-0 bg-black/95 backdrop-blur-lg" />
+      <div className="absolute inset-0 bg-black/97 backdrop-blur-lg" />
       
       <div className="relative z-10 flex flex-col justify-center min-h-screen px-8">
         <nav className="text-center mb-16">
@@ -79,8 +79,12 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                 <a
                   href={item.href}
                   onClick={onClose}
-                  className="block text-4xl font-light text-white hover:text-white/70 transition-colors duration-300 tracking-wide"
-                  style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                  className="block text-4xl font-medium text-white hover:text-white/70 transition-all duration-500 tracking-wider"
+                  style={{ 
+                    fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif',
+                    fontWeight: '500',
+                    letterSpacing: '0.05em'
+                  }}
                 >
                   {item.label}
                 </a>
@@ -99,7 +103,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                   href={link.url} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-white/60 hover:text-white transition-colors duration-300 p-2"
+                  className="text-white/60 hover:text-white transition-all duration-500 p-2 transform hover:scale-110"
                   style={{ 
                     animationDelay: `${(navItems.length + index) * 0.1}s`,
                     animationFillMode: 'forwards'
