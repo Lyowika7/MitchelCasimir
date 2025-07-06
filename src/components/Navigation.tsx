@@ -16,15 +16,16 @@ const Navigation = ({ className }: NavigationProps) => {
 
   return (
     <nav className={className}>
-      <ul className="flex items-center space-x-8">
+      <ul className="flex items-center space-x-12">
         {navItems.map((item) => (
           <li key={item.label}>
             <a 
               href={item.href} 
-              className="text-white/90 hover:text-white transition-all duration-300 text-sm font-medium tracking-wide uppercase relative group"
+              className="relative text-white/90 hover:text-white transition-all duration-300 text-sm font-medium tracking-wider uppercase group"
+              style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
             >
               {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-px bg-white transition-all duration-300 group-hover:w-full" />
             </a>
           </li>
         ))}

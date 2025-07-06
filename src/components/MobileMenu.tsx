@@ -61,18 +61,26 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-40 md:hidden">
-      <div className="absolute inset-0 bg-black/98 backdrop-blur-md" />
+    <div className="fixed inset-0 z-40 lg:hidden">
+      <div className="absolute inset-0 bg-black/95 backdrop-blur-lg" />
       
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
-        <nav className="text-center mb-12">
-          <ul className="space-y-6">
+      <div className="relative z-10 flex flex-col justify-center min-h-screen px-8">
+        <nav className="text-center mb-16">
+          <ul className="space-y-8">
             {navItems.map((item, index) => (
-              <li key={item.label} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <li 
+                key={item.label} 
+                className="transform translate-y-8 opacity-0 animate-fade-in" 
+                style={{ 
+                  animationDelay: `${index * 0.1}s`,
+                  animationFillMode: 'forwards'
+                }}
+              >
                 <a
                   href={item.href}
                   onClick={onClose}
-                  className="block text-2xl md:text-3xl font-playfair text-white hover:text-white/70 transition-colors uppercase tracking-wide"
+                  className="block text-4xl font-light text-white hover:text-white/70 transition-colors duration-300 tracking-wide"
+                  style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
                 >
                   {item.label}
                 </a>
@@ -82,7 +90,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
         </nav>
         
         <div className="text-center">
-          <div className="flex flex-col space-y-3">
+          <div className="flex justify-center space-x-8">
             {socialLinks.map((link, index) => {
               const IconComponent = link.icon;
               return (
@@ -91,11 +99,13 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                   href={link.url} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-white/70 hover:text-white transition-colors flex items-center justify-center space-x-3 text-sm uppercase tracking-wider"
-                  style={{ animationDelay: `${(navItems.length + index) * 0.1}s` }}
+                  className="text-white/60 hover:text-white transition-colors duration-300 p-2"
+                  style={{ 
+                    animationDelay: `${(navItems.length + index) * 0.1}s`,
+                    animationFillMode: 'forwards'
+                  }}
                 >
-                  <IconComponent size={16} />
-                  <span>{link.name}</span>
+                  <IconComponent size={24} />
                 </a>
               );
             })}
