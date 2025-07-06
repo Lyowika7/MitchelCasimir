@@ -1,6 +1,5 @@
 
 import { useState, useEffect } from 'react';
-import Navigation from './Navigation';
 import MobileMenu from './MobileMenu';
 
 interface HeaderProps {
