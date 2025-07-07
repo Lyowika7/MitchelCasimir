@@ -1,5 +1,6 @@
 
 import { useEffect } from 'react';
+import { Music, Play, Instagram, Camera } from 'lucide-react';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -8,11 +9,41 @@ interface MobileMenuProps {
 
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   const navItems = [
-    { label: 'SHOP', href: '/shop' },
-    { label: 'TOUR', href: '/tour' },
-    { label: 'MUSIC', href: '/music' },
-    { label: 'VIDEOS', href: '/videos' },
-    { label: 'NEWSLETTER', href: '/newsletter' }
+    { label: 'Home', href: '/' },
+    { label: 'Music', href: '/music' },
+    { label: 'News', href: '/news' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Tour', href: '/tour' },
+    { label: 'Store', href: '/store' },
+    { label: 'Contact', href: '/contact' }
+  ];
+
+  const socialLinks = [
+    { 
+      name: 'Spotify', 
+      url: 'https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk?si=SzaXxJbCTMiP2M7_7nMy3A',
+      icon: Music
+    },
+    { 
+      name: 'Apple Music', 
+      url: 'https://music.apple.com/us/artist/mitchelcasimir/1736847723',
+      icon: Music
+    },
+    { 
+      name: 'YouTube', 
+      url: 'https://www.youtube.com/@MitchelCasimir',
+      icon: Play
+    },
+    { 
+      name: 'Instagram', 
+      url: 'https://www.instagram.com/mitchelcasimir/',
+      icon: Instagram
+    },
+    { 
+      name: 'TikTok', 
+      url: 'https://www.tiktok.com/@mitchelcasimir',
+      icon: Camera
+    }
   ];
 
   useEffect(() => {
@@ -31,37 +62,25 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
   return (
     <div className="fixed inset-0 z-40 lg:hidden">
-      <div 
-        className={`absolute inset-0 bg-black transition-opacity duration-500 ${
-          isOpen ? 'opacity-95' : 'opacity-0'
-        }`} 
-      />
+      <div className="absolute inset-0 bg-black/95 backdrop-blur-lg" />
       
-      <div className={`relative z-10 flex flex-col justify-center min-h-screen px-8 transform transition-transform duration-500 ${
-        isOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}>
-        <nav className="text-center">
+      <div className="relative z-10 flex flex-col justify-center min-h-screen px-8">
+        <nav className="text-center mb-16">
           <ul className="space-y-8">
             {navItems.map((item, index) => (
               <li 
                 key={item.label} 
-                className={`transform transition-all duration-700 ${
-                  isOpen 
-                    ? 'translate-y-0 opacity-100' 
-                    : 'translate-y-8 opacity-0'
-                }`}
+                className="transform translate-y-8 opacity-0 animate-fade-in" 
                 style={{ 
-                  transitionDelay: isOpen ? `${index * 100}ms` : '0ms'
+                  animationDelay: `${index * 0.1}s`,
+                  animationFillMode: 'forwards'
                 }}
               >
                 <a
                   href={item.href}
                   onClick={onClose}
-                  className="block text-3xl font-black text-white hover:opacity-60 transition-opacity duration-300 tracking-[0.1em] uppercase"
-                  style={{ 
-                    fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif',
-                    fontWeight: '900'
-                  }}
+                  className="block text-4xl font-light text-white hover:text-white/70 transition-colors duration-300 tracking-wide"
+                  style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
                 >
                   {item.label}
                 </a>
@@ -69,6 +88,29 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             ))}
           </ul>
         </nav>
+        
+        <div className="text-center">
+          <div className="flex justify-center space-x-8">
+            {socialLinks.map((link, index) => {
+              const IconComponent = link.icon;
+              return (
+                <a 
+                  key={link.name}
+                  href={link.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-white/60 hover:text-white transition-colors duration-300 p-2"
+                  style={{ 
+                    animationDelay: `${(navItems.length + index) * 0.1}s`,
+                    animationFillMode: 'forwards'
+                  }}
+                >
+                  <IconComponent size={24} />
+                </a>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

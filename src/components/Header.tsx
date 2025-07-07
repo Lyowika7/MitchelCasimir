@@ -1,5 +1,7 @@
 
 import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import Navigation from './Navigation';
 import MobileMenu from './MobileMenu';
 
 interface HeaderProps {
@@ -21,88 +23,50 @@ const Header = ({ className }: HeaderProps) => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ease-out ${
-        isScrolled 
-          ? 'bg-black py-3' 
-          : 'bg-black/20 backdrop-blur-sm py-5'
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+        isScrolled ? 'bg-black/90 backdrop-blur-lg border-b border-white/5' : 'bg-transparent'
       } ${className}`}>
-        <div className="w-full px-6 lg:px-12">
-          <div className="flex items-center justify-between lg:justify-center relative">
-            {/* Desktop Navigation - Left Side */}
-            <div className="hidden lg:flex items-center space-x-12 absolute left-0">
+        <div className="max-w-full mx-auto px-6 lg:px-12">
+          <div className="flex justify-between items-center h-20 lg:h-24">
+            {/* Logo */}
+            <div className="flex-shrink-0 relative">
               <a 
-                href="/shop" 
-                className="text-white text-sm font-bold uppercase tracking-[0.2em] hover:opacity-60 transition-opacity duration-300"
+                href="/" 
+                className="block text-white font-bold text-2xl lg:text-3xl tracking-tight hover:opacity-80 transition-opacity duration-300"
+                style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
               >
-                Shop
-              </a>
-              <a 
-                href="/tour" 
-                className="text-white text-sm font-bold uppercase tracking-[0.2em] hover:opacity-60 transition-opacity duration-300"
-              >
-                Tour
+                MitchelCasimir
               </a>
             </div>
             
-            {/* Logo - Centered */}
-            <div className="flex-shrink-0">
-              <a 
-                href="/" 
-                className={`block text-white font-black tracking-tight hover:opacity-80 transition-all duration-500 ease-out ${
-                  isScrolled ? 'text-xl' : 'text-2xl'
-                }`}
-                style={{ 
-                  fontFamily: 'system-ui, -apple-system, "Segoe UI", sans-serif',
-                  fontWeight: '900',
-                  letterSpacing: '0.05em'
-                }}
-              >
-                MITCHELCASIMIR
-              </a>
-            </div>
-
-            {/* Desktop Navigation - Right Side */}
-            <div className="hidden lg:flex items-center space-x-12 absolute right-0">
-              <a 
-                href="/music" 
-                className="text-white text-sm font-bold uppercase tracking-[0.2em] hover:opacity-60 transition-opacity duration-300"
-              >
-                Music
-              </a>
-              <a 
-                href="/videos" 
-                className="text-white text-sm font-bold uppercase tracking-[0.2em] hover:opacity-60 transition-opacity duration-300"
-              >
-                Videos
-              </a>
-              <a 
-                href="/newsletter" 
-                className="text-white text-sm font-bold uppercase tracking-[0.2em] hover:opacity-60 transition-opacity duration-300"
-              >
-                Newsletter
-              </a>
-            </div>
+            {/* Desktop Navigation */}
+            <Navigation className="hidden lg:flex" />
             
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden relative z-50 p-2 text-white hover:opacity-60 transition-opacity duration-300"
+              className="lg:hidden relative z-50 p-2 text-white hover:opacity-70 transition-opacity duration-300"
               aria-label="Toggle menu"
             >
               <div className="relative w-6 h-6">
                 <span className={`absolute top-1 left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
-                  isMobileMenuOpen ? 'rotate-45 top-2.5' : ''
+                  isMobileMenuOpen ? 'rotate-45 top-3' : ''
                 }`} />
-                <span className={`absolute top-2.5 left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
+                <span className={`absolute top-3 left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
                   isMobileMenuOpen ? 'opacity-0' : ''
                 }`} />
-                <span className={`absolute top-4 left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
-                  isMobileMenuOpen ? '-rotate-45 top-2.5' : ''
+                <span className={`absolute top-5 left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
+                  isMobileMenuOpen ? '-rotate-45 top-3' : ''
                 }`} />
               </div>
             </button>
           </div>
         </div>
+
+        {/* Subtle bottom border that appears on scroll */}
+        <div className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent transition-opacity duration-500 ${
+          isScrolled ? 'opacity-100' : 'opacity-0'
+        }`} />
       </header>
 
       {/* Mobile Menu */}
