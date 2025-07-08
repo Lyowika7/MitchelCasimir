@@ -105,54 +105,50 @@ const Music = () => {
       
       <div className="pt-32 pb-16 px-6">
         <div className="max-w-4xl mx-auto">
-          {/* Navigation arrows */}
-          <div className="flex justify-between items-center mb-8">
-            <button
-              onClick={handlePrevious}
-              className="p-3 text-white/60 hover:text-white transition-colors duration-300 hover:bg-white/5 rounded-full"
-              disabled={mockReleases.length <= 1}
-            >
-              <ChevronLeft size={24} />
-            </button>
-            
-            <div className="text-center">
-              <span className="text-white/40 text-sm tracking-widest uppercase">
-                {currentIndex + 1} of {mockReleases.length}
-              </span>
-            </div>
-            
-            <button
-              onClick={handleNext}
-              className="p-3 text-white/60 hover:text-white transition-colors duration-300 hover:bg-white/5 rounded-full"
-              disabled={mockReleases.length <= 1}
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
-
           {/* Main content */}
           <div className="text-center animate-fade-in">
-            {/* Album cover */}
-            <div 
-              className="relative max-w-lg mx-auto mb-8 cursor-pointer group"
-              onClick={() => openModal(currentRelease)}
-            >
-              <div className="aspect-square overflow-hidden rounded-2xl bg-gray-900">
-                {currentRelease.cover_image_url ? (
-                  <img
-                    src={currentRelease.cover_image_url}
-                    alt={currentRelease.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <Play size={64} className="text-white/20" />
-                  </div>
-                )}
+            {/* Navigation and Album cover container */}
+            <div className="flex items-center justify-center gap-8 mb-8">
+              {/* Left navigation button */}
+              <button
+                onClick={handlePrevious}
+                className="p-3 text-white/60 hover:text-white transition-colors duration-300 hover:bg-white/5 rounded-full flex-shrink-0"
+                disabled={mockReleases.length <= 1}
+              >
+                <ChevronLeft size={24} />
+              </button>
+              
+              {/* Album cover */}
+              <div 
+                className="relative max-w-lg cursor-pointer group flex-shrink-0"
+                onClick={() => openModal(currentRelease)}
+              >
+                <div className="aspect-square overflow-hidden rounded-2xl bg-gray-900">
+                  {currentRelease.cover_image_url ? (
+                    <img
+                      src={currentRelease.cover_image_url}
+                      alt={currentRelease.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <Play size={64} className="text-white/20" />
+                    </div>
+                  )}
+                </div>
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl flex items-center justify-center">
+                  <Play size={48} className="text-white" />
+                </div>
               </div>
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl flex items-center justify-center">
-                <Play size={48} className="text-white" />
-              </div>
+              
+              {/* Right navigation button */}
+              <button
+                onClick={handleNext}
+                className="p-3 text-white/60 hover:text-white transition-colors duration-300 hover:bg-white/5 rounded-full flex-shrink-0"
+                disabled={mockReleases.length <= 1}
+              >
+                <ChevronRight size={24} />
+              </button>
             </div>
 
             {/* Song info */}
