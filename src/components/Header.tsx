@@ -32,8 +32,7 @@ const Header = ({ className }: HeaderProps) => {
             <div className="flex-shrink-0 relative">
               <a 
                 href="/" 
-                className="block text-white font-bold text-2xl lg:text-3xl tracking-tight hover:opacity-80 transition-opacity duration-300"
-                style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                className="block text-white font-playfair font-semibold text-2xl lg:text-3xl tracking-wide hover:opacity-80 transition-opacity duration-300"
               >
                 MitchelCasimir
               </a>
