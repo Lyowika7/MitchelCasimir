@@ -1,42 +1,48 @@
 
-import { Music, Play, Instagram, Camera } from 'lucide-react';
+import { Music as MusicIcon, Play, Instagram, Camera } from 'lucide-react';
+import TikTokIcon from './icons/TikTokIcon';
 
 const SocialLinks = () => {
   const socialLinks = [
     {
       name: 'Spotify',
       url: 'https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk?si=SzaXxJbCTMiP2M7_7nMy3A',
-      icon: Music,
-      bgColor: 'bg-green-600',
-      hoverColor: 'hover:bg-green-700'
+      icon: MusicIcon,
+      bgColor: 'bg-[#1DB954]',
+      hoverColor: 'hover:bg-[#1ed760]',
+      shadowColor: 'hover:shadow-green-500/30'
     },
     {
       name: 'Apple Music',
       url: 'https://music.apple.com/us/artist/mitchelcasimir/1736847723',
-      icon: Music,
-      bgColor: 'bg-gray-800',
-      hoverColor: 'hover:bg-gray-700'
+      icon: MusicIcon,
+      bgColor: 'bg-gradient-to-b from-gray-800 to-black',
+      hoverColor: 'hover:from-gray-700 hover:to-gray-900',
+      shadowColor: 'hover:shadow-gray-500/30'
     },
     {
-      name: 'YouTube',
+      name: 'YouTube Music',
       url: 'https://www.youtube.com/@MitchelCasimir',
       icon: Play,
-      bgColor: 'bg-red-600',
-      hoverColor: 'hover:bg-red-700'
+      bgColor: 'bg-[#FF0000]',
+      hoverColor: 'hover:bg-[#ff1a1a]',
+      shadowColor: 'hover:shadow-red-500/30'
     },
     {
       name: 'Instagram',
       url: 'https://www.instagram.com/mitchelcasimir/',
       icon: Instagram,
-      bgColor: 'bg-gradient-to-r from-purple-500 to-pink-500',
-      hoverColor: 'hover:from-purple-600 hover:to-pink-600'
+      bgColor: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400',
+      hoverColor: 'hover:from-purple-600 hover:via-pink-600 hover:to-orange-500',
+      shadowColor: 'hover:shadow-pink-500/30'
     },
     {
       name: 'TikTok',
       url: 'https://www.tiktok.com/@mitchelcasimir',
-      icon: Camera,
+      icon: 'tiktok',
       bgColor: 'bg-black',
-      hoverColor: 'hover:bg-gray-900'
+      hoverColor: 'hover:bg-gray-900',
+      shadowColor: 'hover:shadow-white/30'
     }
   ];
 
@@ -47,23 +53,26 @@ const SocialLinks = () => {
           Connect
         </h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+        <div className="flex justify-center items-center gap-6 flex-wrap">
           {socialLinks.map((link, index) => {
-            const IconComponent = link.icon;
+            const IconComponent = link.icon === 'tiktok' ? null : link.icon;
             return (
               <a
                 key={link.name}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-link group text-center block transform transition-all duration-300 hover:scale-105"
+                className={`w-14 h-14 ${link.bgColor} ${link.hoverColor} ${link.shadowColor} rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg animate-fade-in`}
                 style={{
                   animationDelay: `${index * 0.1}s`
                 }}
+                aria-label={`Visit ${link.name}`}
               >
-                <div className={`p-8 rounded-xl ${link.bgColor} ${link.hoverColor} transition-all duration-300 flex items-center justify-center`}>
-                  <IconComponent size={48} className="text-white" />
-                </div>
+                {link.icon === 'tiktok' ? (
+                  <TikTokIcon size={24} className="text-white" />
+                ) : (
+                  <IconComponent size={24} className="text-white" />
+                )}
               </a>
             );
           })}

@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { ChevronLeft, ChevronRight, X, Play, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, Play, Music as MusicIcon, Instagram } from 'lucide-react';
 import Header from '../components/Header';
+import TikTokIcon from '../components/icons/TikTokIcon';
 
 interface Release {
   id: string;
@@ -188,62 +189,67 @@ const Music = () => {
             </DialogTitle>
           </DialogHeader>
           
-          <div className="space-y-3 pt-4">
+          <div className="flex justify-center gap-4 pt-6">
+            {/* Spotify */}
             {selectedRelease?.spotify_url && (
-              <Button
-                asChild
-                variant="outline"
-                className="w-full bg-green-600 hover:bg-green-700 border-green-600 text-white"
+              <a
+                href={selectedRelease.spotify_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-[#1DB954] hover:bg-[#1ed760] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25"
+                aria-label="Listen on Spotify"
               >
-                <a href={selectedRelease.spotify_url} target="_blank" rel="noopener noreferrer">
-                  <div className="w-5 h-5 mr-3 bg-green-400 rounded-full flex items-center justify-center">
-                    <Play size={12} className="text-green-900" />
-                  </div>
-                  Spotify
-                  <ExternalLink size={16} className="ml-auto" />
-                </a>
-              </Button>
-            )}
-            
-            {selectedRelease?.apple_music_url && (
-              <Button
-                asChild
-                variant="outline"
-                className="w-full bg-gray-800 hover:bg-gray-700 border-gray-600 text-white"
-              >
-                <a href={selectedRelease.apple_music_url} target="_blank" rel="noopener noreferrer">
-                  <div className="w-5 h-5 mr-3 bg-white rounded-sm"></div>
-                  Apple Music
-                  <ExternalLink size={16} className="ml-auto" />
-                </a>
-              </Button>
-            )}
-            
-            <Button
-              asChild
-              variant="outline"
-              className="w-full bg-gray-800 hover:bg-gray-700 border-gray-600 text-white"
-            >
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <div className="w-5 h-5 mr-3 bg-gradient-to-br from-pink-500 to-orange-400 rounded"></div>
-                iTunes
-                <ExternalLink size={16} className="ml-auto" />
+                <MusicIcon size={20} className="text-white" />
               </a>
-            </Button>
-            
-            {selectedRelease?.youtube_url && (
-              <Button
-                asChild
-                variant="outline"
-                className="w-full bg-red-600 hover:bg-red-700 border-red-600 text-white"
-              >
-                <a href={selectedRelease.youtube_url} target="_blank" rel="noopener noreferrer">
-                  <Play size={16} className="mr-3" />
-                  YouTube Music
-                  <ExternalLink size={16} className="ml-auto" />
-                </a>
-              </Button>
             )}
+            
+            {/* Apple Music */}
+            {selectedRelease?.apple_music_url && (
+              <a
+                href={selectedRelease.apple_music_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-gradient-to-b from-gray-800 to-black hover:from-gray-700 hover:to-gray-900 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-gray-500/25"
+                aria-label="Listen on Apple Music"
+              >
+                <MusicIcon size={20} className="text-white" />
+              </a>
+            )}
+            
+            {/* YouTube Music */}
+            {selectedRelease?.youtube_url && (
+              <a
+                href={selectedRelease.youtube_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 bg-[#FF0000] hover:bg-[#ff1a1a] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-red-500/25"
+                aria-label="Listen on YouTube Music"
+              >
+                <Play size={20} className="text-white" />
+              </a>
+            )}
+            
+            {/* Instagram */}
+            <a
+              href="https://www.instagram.com/mitchelcasimir/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
+              aria-label="Follow on Instagram"
+            >
+              <Instagram size={20} className="text-white" />
+            </a>
+            
+            {/* TikTok */}
+            <a
+              href="https://www.tiktok.com/@mitchelcasimir"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 bg-black hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-white/25"
+              aria-label="Follow on TikTok"
+            >
+              <TikTokIcon size={20} className="text-white" />
+            </a>
           </div>
         </DialogContent>
       </Dialog>
