@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calendar } from 'lucide-react';
+import { Calendar, Instagram } from 'lucide-react';
 import Header from '../components/Header';
+import TikTokIcon from '../components/icons/TikTokIcon';
+import XIcon from '../components/icons/XIcon';
 
 interface Post {
   id: string;
@@ -57,9 +59,41 @@ const News = () => {
             <h1 className="font-playfair text-5xl md:text-6xl font-bold text-white mb-4">
               News
             </h1>
-            <p className="text-xl text-white/70">
+            <p className="text-xl text-white/70 mb-6">
               Stay updated with the latest from ARIA
             </p>
+            
+            <div className="flex justify-center items-center gap-4">
+              <a
+                href="https://www.instagram.com/mitchelcasimir/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/30"
+                aria-label="Follow on Instagram"
+              >
+                <Instagram size={20} className="text-white" />
+              </a>
+              
+              <a
+                href="https://x.com/mitchelcasimir"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-black hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-white/30"
+                aria-label="Follow on X"
+              >
+                <XIcon size={18} className="text-white" />
+              </a>
+              
+              <a
+                href="https://www.tiktok.com/@mitchelcasimir"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-black hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-white/30"
+                aria-label="Follow on TikTok"
+              >
+                <TikTokIcon size={18} className="text-white" />
+              </a>
+            </div>
           </div>
 
           {posts.length === 0 ? (
