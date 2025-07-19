@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Image as ImageIcon } from 'lucide-react';
+import { Image as ImageIcon, Instagram } from 'lucide-react';
 import Header from '../components/Header';
+import TikTokIcon from '../components/icons/TikTokIcon';
 
 interface Photo {
   id: string;
@@ -87,6 +88,31 @@ const Gallery = () => {
                         Featured
                       </Badge>
                     )}
+                    
+                    {/* Social media links */}
+                    <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <a
+                        href="https://www.instagram.com/mitchelcasimir/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-8 h-8 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/30"
+                        aria-label="View on Instagram"
+                      >
+                        <Instagram size={16} className="text-white" />
+                      </a>
+                      
+                      <a
+                        href="https://www.tiktok.com/@mitchelcasimir"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-8 h-8 bg-black hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-white/30"
+                        aria-label="View on TikTok"
+                      >
+                        <TikTokIcon size={14} className="text-white" />
+                      </a>
+                    </div>
                   </div>
                   {photo.title && (
                     <div className="p-4">
