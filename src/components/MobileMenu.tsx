@@ -1,6 +1,7 @@
 
 import { useEffect } from 'react';
 import { Music, Play, Instagram, Camera } from 'lucide-react';
+import { SiSpotify, SiApplemusic, SiYoutubemusic, SiInstagram, SiTiktok } from 'react-icons/si';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -22,27 +23,27 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
     { 
       name: 'Spotify', 
       url: 'https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk?si=SzaXxJbCTMiP2M7_7nMy3A',
-      icon: Music
+      icon: SiSpotify
     },
     { 
       name: 'Apple Music', 
       url: 'https://music.apple.com/us/artist/mitchelcasimir/1736847723',
-      icon: Music
+      icon: SiApplemusic
     },
     { 
       name: 'YouTube', 
       url: 'https://www.youtube.com/@MitchelCasimir',
-      icon: Play
+      icon: SiYoutubemusic
     },
     { 
       name: 'Instagram', 
       url: 'https://www.instagram.com/mitchelcasimir/',
-      icon: Instagram
+      icon: SiInstagram
     },
     { 
       name: 'TikTok', 
       url: 'https://www.tiktok.com/@mitchelcasimir',
-      icon: Camera
+      icon: SiTiktok
     }
   ];
 

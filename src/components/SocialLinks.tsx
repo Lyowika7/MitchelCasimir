@@ -1,21 +1,22 @@
 
 import { Music as MusicIcon, Play, Instagram, Camera } from 'lucide-react';
+import { SiSpotify, SiApplemusic, SiYoutubemusic, SiInstagram, SiTiktok } from 'react-icons/si';
 import TikTokIcon from './icons/TikTokIcon';
 
 const SocialLinks = () => {
   const socialLinks = [
     {
       name: 'Spotify',
-      url: 'https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk?si=SzaXxJbCTMiP2M7_7nMy3A',
-      icon: MusicIcon,
+      url: 'https://open.spotify.com/artist/74d76Hu0T6lPkIExI8PDVa?si=Q7cw7RePQneNiTgCAz8lEg',
+      icon: SiSpotify,
       bgColor: 'bg-[#1DB954]',
       hoverColor: 'hover:bg-[#1ed760]',
       shadowColor: 'hover:shadow-green-500/30'
     },
     {
       name: 'Apple Music',
-      url: 'https://music.apple.com/us/artist/mitchelcasimir/1736847723',
-      icon: MusicIcon,
+      url: 'https://music.apple.com/gb/artist/mitchel-casimir/1821033196',
+      icon: SiApplemusic,
       bgColor: 'bg-gradient-to-b from-gray-800 to-black',
       hoverColor: 'hover:from-gray-700 hover:to-gray-900',
       shadowColor: 'hover:shadow-gray-500/30'
@@ -23,14 +24,14 @@ const SocialLinks = () => {
     {
       name: 'YouTube Music',
       url: 'https://www.youtube.com/@MitchelCasimir',
-      icon: Play,
+      icon: SiYoutubemusic,
       bgColor: 'bg-[#FF0000]',
       hoverColor: 'hover:bg-[#ff1a1a]',
       shadowColor: 'hover:shadow-red-500/30'
     },
     {
       name: 'Instagram',
-      url: 'https://www.instagram.com/mitchelcasimir/',
+      url: 'https://www.instagram.com/mitchelcasimirr?igsh=Zms1YTBldmVvOHpj&utm_source=qr',
       icon: Instagram,
       bgColor: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400',
       hoverColor: 'hover:from-purple-600 hover:via-pink-600 hover:to-orange-500',
@@ -38,7 +39,7 @@ const SocialLinks = () => {
     },
     {
       name: 'TikTok',
-      url: 'https://www.tiktok.com/@mitchelcasimir',
+      url: 'https://www.tiktok.com/@mitchelcasimir?_t=ZN-8xnRaucCu74&_r=1',
       icon: 'tiktok',
       bgColor: 'bg-black',
       hoverColor: 'hover:bg-gray-900',
@@ -80,7 +81,7 @@ const SocialLinks = () => {
         
         <div className="mt-16 text-center">
           <p className="text-white/60 text-sm tracking-wide">
-            © 2024 MitchelCasimir. All rights reserved.
+            © 2025 MitchelCasimir. All rights reserved.
           </p>
         </div>
       </div>

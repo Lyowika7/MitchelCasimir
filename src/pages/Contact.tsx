@@ -88,7 +88,7 @@ const Contact = () => {
                     <Mail className="text-white/60" size={24} />
                     <div>
                       <h3 className="text-white font-semibold">Email</h3>
-                      <p className="text-white/70">hello@ariamusic.com</p>
+                      <p className="text-white/70">kelechiezemonye0@gmail.com</p>
                     </div>
                   </div>
                 </CardContent>
@@ -112,7 +112,7 @@ const Contact = () => {
                     <MapPin className="text-white/60" size={24} />
                     <div>
                       <h3 className="text-white font-semibold">Location</h3>
-                      <p className="text-white/70">Los Angeles, CA</p>
+                      <p className="text-white/70">Leicester, UK</p>
                     </div>
                   </div>
                 </CardContent>

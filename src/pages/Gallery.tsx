@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -19,10 +19,30 @@ const Gallery = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
+  const embedScriptLoaded = useRef(false);
 
   useEffect(() => {
     fetchPhotos();
   }, []);
+
+  useEffect(() => {
+    // Load Instagram embed script
+    if (!embedScriptLoaded.current && photos.length > 0) {
+      const script = document.createElement('script');
+      script.src = '//www.instagram.com/embed.js';
+      script.async = true;
+      document.body.appendChild(script);
+      embedScriptLoaded.current = true;
+      
+      // Process embeds after a short delay
+      setTimeout(() => {
+        const instgrm = (window as any).instgrm;
+        if (instgrm) {
+          instgrm.Embeds.process();
+        }
+      }, 500);
+    }
+  }, [photos]);
 
   const fetchPhotos = async () => {
     try {
@@ -39,6 +59,16 @@ const Gallery = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const isInstagramUrl = (url: string) => {
+    return url.includes('instagram.com');
+  };
+
+  const getInstagramEmbedUrl = (url: string) => {
+    // Remove trailing slash if present
+    const cleanUrl = url.endsWith('/') ? url.slice(0, -1) : url;
+    return `${cleanUrl}/embed`;
   };
 
   if (loading) {
@@ -70,65 +100,88 @@ const Gallery = () => {
               <p className="text-white/60 text-lg">No photos available yet. Check back soon!</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {photos.map((photo) => (
-                <Card 
-                  key={photo.id} 
-                  className="bg-white/5 border-white/10 overflow-hidden hover:bg-white/10 transition-colors cursor-pointer group"
-                  onClick={() => setSelectedPhoto(photo)}
-                >
-                  <div className="aspect-square bg-gray-800 overflow-hidden relative">
-                    <img 
-                      src={photo.image_url} 
-                      alt={photo.title || 'Gallery photo'}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    {photo.featured && (
-                      <Badge className="absolute top-3 left-3 bg-yellow-600 text-white">
-                        Featured
-                      </Badge>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {photos.map((photo) => {
+                const isInstagram = isInstagramUrl(photo.image_url);
+                
+                return (
+                  <Card 
+                    key={photo.id} 
+                    className="bg-white/5 border-white/10 overflow-hidden hover:bg-white/10 transition-colors group"
+                  >
+                    {isInstagram ? (
+                      <div className="relative">
+                        <iframe
+                          src={getInstagramEmbedUrl(photo.image_url)}
+                          className="w-full border-0"
+                          style={{ minHeight: '600px' }}
+                          scrolling="no"
+                          allowTransparency={true}
+                        />
+                        {photo.featured && (
+                          <Badge className="absolute top-3 left-3 bg-yellow-600 text-white z-10">
+                            Featured
+                          </Badge>
+                        )}
+                      </div>
+                    ) : (
+                      <div 
+                        className="aspect-square bg-gray-800 overflow-hidden relative cursor-pointer"
+                        onClick={() => setSelectedPhoto(photo)}
+                      >
+                        <img 
+                          src={photo.image_url} 
+                          alt={photo.title || 'Gallery photo'}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        {photo.featured && (
+                          <Badge className="absolute top-3 left-3 bg-yellow-600 text-white">
+                            Featured
+                          </Badge>
+                        )}
+                        
+                        {/* Social media links */}
+                        <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <a
+                            href="https://www.instagram.com/mitchelcasimir/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="w-8 h-8 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/30"
+                            aria-label="View on Instagram"
+                          >
+                            <Instagram size={16} className="text-white" />
+                          </a>
+                          
+                          <a
+                            href="https://www.tiktok.com/@mitchelcasimir"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="w-8 h-8 bg-black hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-white/30"
+                            aria-label="View on TikTok"
+                          >
+                            <TikTokIcon size={14} className="text-white" />
+                          </a>
+                        </div>
+                      </div>
                     )}
-                    
-                    {/* Social media links */}
-                    <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <a
-                        href="https://www.instagram.com/mitchelcasimir/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="w-8 h-8 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/30"
-                        aria-label="View on Instagram"
-                      >
-                        <Instagram size={16} className="text-white" />
-                      </a>
-                      
-                      <a
-                        href="https://www.tiktok.com/@mitchelcasimir"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="w-8 h-8 bg-black hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-white/30"
-                        aria-label="View on TikTok"
-                      >
-                        <TikTokIcon size={14} className="text-white" />
-                      </a>
-                    </div>
-                  </div>
-                  {photo.title && (
-                    <div className="p-4">
-                      <h3 className="text-white font-medium">{photo.title}</h3>
-                      {photo.description && (
-                        <p className="text-white/60 text-sm mt-1 line-clamp-2">{photo.description}</p>
-                      )}
-                    </div>
-                  )}
-                </Card>
-              ))}
+                    {photo.title && !isInstagram && (
+                      <div className="p-4">
+                        <h3 className="text-white font-medium">{photo.title}</h3>
+                        {photo.description && (
+                          <p className="text-white/60 text-sm mt-1 line-clamp-2">{photo.description}</p>
+                        )}
+                      </div>
+                    )}
+                  </Card>
+                );
+              })}
             </div>
           )}
 
-          {/* Modal for selected photo */}
-          {selectedPhoto && (
+          {/* Modal for selected photo - only for non-Instagram images */}
+          {selectedPhoto && !isInstagramUrl(selectedPhoto.image_url) && (
             <div 
               className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
               onClick={() => setSelectedPhoto(null)}

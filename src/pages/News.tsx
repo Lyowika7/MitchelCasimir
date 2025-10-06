@@ -60,7 +60,7 @@ const News = () => {
               News
             </h1>
             <p className="text-xl text-white/70 mb-6">
-              Stay updated with the latest from ARIA
+              Stay updated with the latest from mitchelcasimir
             </p>
             
             <div className="flex justify-center items-center gap-4">

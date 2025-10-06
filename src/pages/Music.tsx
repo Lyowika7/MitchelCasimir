@@ -5,6 +5,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { ChevronLeft, ChevronRight, X, Play, Music as MusicIcon, Instagram } from 'lucide-react';
 import Header from '../components/Header';
 import TikTokIcon from '../components/icons/TikTokIcon';
+import { SiSpotify, SiApplemusic, SiYoutubemusic, SiInstagram, SiTiktok } from 'react-icons/si';
+
 
 interface Release {
   id: string;
@@ -78,10 +80,10 @@ const Music = () => {
       id: '1',
       title: 'Latest Single',
       type: 'single',
-      release_date: '2024-01-01',
-      cover_image_url: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?w=600&h=600&fit=crop',
-      spotify_url: 'https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk',
-      apple_music_url: 'https://music.apple.com/us/artist/mitchelcasimir/1736847723',
+      release_date: '2025-06-27',
+      cover_image_url: 'images/main.jpg',
+      spotify_url: 'https://open.spotify.com/artist/74d76Hu0T6lPkIExI8PDVa?si=Q7cw7RePQneNiTgCAz8lEg',
+      apple_music_url: 'https://music.apple.com/gb/artist/mitchel-casimir/1821033196',
       youtube_url: 'https://www.youtube.com/@MitchelCasimir',
       description: 'New music from MitchelCasimir'
     },
@@ -89,10 +91,10 @@ const Music = () => {
       id: '2',
       title: 'Previous Release',
       type: 'single',
-      release_date: '2023-12-01',
+      release_date: '2025-06-27',
       cover_image_url: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=600&h=600&fit=crop',
-      spotify_url: 'https://open.spotify.com/artist/5XKBEUbzPsOlbVgOFXq7Hk',
-      apple_music_url: 'https://music.apple.com/us/artist/mitchelcasimir/1736847723',
+      spotify_url: 'https://open.spotify.com/artist/74d76Hu0T6lPkIExI8PDVa?si=Q7cw7RePQneNiTgCAz8lEg',
+      apple_music_url: 'https://music.apple.com/gb/artist/mitchel-casimir/1821033196',
       youtube_url: 'https://www.youtube.com/@MitchelCasimir',
       description: 'Another great track'
     }
@@ -199,7 +201,7 @@ const Music = () => {
                 className="w-12 h-12 bg-[#1DB954] hover:bg-[#1ed760] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-green-500/25"
                 aria-label="Listen on Spotify"
               >
-                <MusicIcon size={20} className="text-white" />
+                <SiSpotify size={20} className="text-white" />
               </a>
             )}
             
@@ -212,7 +214,7 @@ const Music = () => {
                 className="w-12 h-12 bg-gradient-to-b from-gray-800 to-black hover:from-gray-700 hover:to-gray-900 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-gray-500/25"
                 aria-label="Listen on Apple Music"
               >
-                <MusicIcon size={20} className="text-white" />
+                <SiApplemusic size={20} className="text-white" />
               </a>
             )}
             
@@ -225,31 +227,9 @@ const Music = () => {
                 className="w-12 h-12 bg-[#FF0000] hover:bg-[#ff1a1a] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-red-500/25"
                 aria-label="Listen on YouTube Music"
               >
-                <Play size={20} className="text-white" />
+                <SiYoutubemusic size={20} className="text-white" />
               </a>
             )}
-            
-            {/* Instagram */}
-            <a
-              href="https://www.instagram.com/mitchelcasimir/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
-              aria-label="Follow on Instagram"
-            >
-              <Instagram size={20} className="text-white" />
-            </a>
-            
-            {/* TikTok */}
-            <a
-              href="https://www.tiktok.com/@mitchelcasimir"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-black hover:bg-gray-900 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-white/25"
-              aria-label="Follow on TikTok"
-            >
-              <TikTokIcon size={20} className="text-white" />
-            </a>
           </div>
         </DialogContent>
       </Dialog>
