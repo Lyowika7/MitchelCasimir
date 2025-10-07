@@ -9,10 +9,13 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  base: "/", // ✅ important for correct asset paths on Vercel
+  build: {
+    outDir: "dist", // ✅ Vercel looks for this by default
+  },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    mode === "development" && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
